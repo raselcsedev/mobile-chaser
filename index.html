@@ -22,7 +22,24 @@
     <!-- MAIN START -->
     <main>
         <section>
-            
+            <!-- SEARCH BOX & SEARCH BUTTON START -->
+            <div class="w-50 container input-group mb-3">
+                <input id="search-box" type="text" class="form-control" placeholder="Enter the Phone " aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <span onclick="allPhones()" class="input-group-text" id="search-btn">Search
+                </div>
+              </div>
+              <!-- SEARCH BOX & SEARCH BUTTON FINISH -->
+
+              <!-- ALL PHONES CONTAINER SECTION START -->
+              <div id="phone-container" class="container mx-auto row row-cols-1 row-cols-md-3 g-4">
+                
+              </div>
+              <!-- ALL PHONES CONTAINER SECTION FINISH  -->
+              <div>
+                <img id="spinner" src="./images/spinnervlll.gif" alt="">
+              </div>
+
         </section>
 
     </main>
