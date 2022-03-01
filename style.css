@@ -6,3 +6,9 @@
     display: none;
     
 }
+#spinner {
+    display: none;
+    height: 100px;
+    width: 150px;
+    justify-content: center;
+  }

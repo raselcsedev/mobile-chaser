@@ -1,4 +1,5 @@
 const allPhones = () => {
+    document.getElementById("spinner").style.display = "block";
     const searchField = document.getElementById('search-box');
     const searchValue = searchField.value;
 
@@ -10,7 +11,9 @@ const allPhones = () => {
 
     // show search error message
     if(searchValue==''){
-        document.getElementById('search-error').style.display='block';  
+        document.getElementById('search-error').style.display='block'; 
+        document.getElementById('text-error').style.display='none'; 
+        document.getElementById("spinner").style.display = "none"; 
     }
     else{
         // search error message display none
@@ -19,7 +22,18 @@ const allPhones = () => {
         const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
         fetch(url)
         .then(res => res.json())
-        .then(data => showPhones(data.data));
+        .then(data =>{
+            if(data.data==null){
+                document.getElementById("spinner").style.display = "block";
+                document.getElementById('text-error').style.display='none'; 
+            }
+            else{
+                showPhones(data.data);
+                document.getElementById("spinner").style.display = "none";
+
+            }
+        }
+             );
     }
 }
 const showPhones = (phones) =>{
@@ -65,6 +79,7 @@ const displayPhone = phone => {
 
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent='';
+    document.getElementById('search-error').style.display='none';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML=`
