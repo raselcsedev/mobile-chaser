@@ -5,6 +5,7 @@ const allPhones = () => {
 
     // clear search field
     searchField.value='';
+
     // clear phones details
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent='';
@@ -30,60 +31,58 @@ const allPhones = () => {
             else{
                 showPhones(data.data);
                 document.getElementById("spinner").style.display = "none";
-
             }
-        }
-             );
+        });
     }
 }
+
+// display all phones 
 const showPhones = (phones) =>{
-    console.log(phones)
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.textContent='';
-    // 
+    
+    // show search error message
     if(phones.length ==0){
         document.getElementById('text-error').style.display='block'; 
     }
     else{
         document.getElementById('text-error').style.display='none'; 
-        phones.forEach(phone => {
+        phones.slice(0,20).forEach(phone => {
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML=`
                     <div class="card h-100">
-                        <img src="${phone.image}" class="card-img-top p-2" alt="...">
+                        <img src="${phone.image}" class="card-img-top p-5" alt="...">
                         <div class="card-body">
-                              <h3 class="phone-name text-center">${phone.phone_name}</h3>
+                              <h4 class="phone-name text-center">${phone.phone_name}</h4>
                               <h5 class="brand text-info text-center">${phone.brand}</h5>    
                         </div>
                         <div class="d-flex justify-content-center all-button">
-                            <button class="btn btn-danger mx-2 mb-2">Delete</button>
-                            <button onclick="details('${phone.slug}')" class="btn btn-success mx-2 mb-2">Details</button>
+                            <button onclick="details('${phone.slug}')" class="btn btn-success px-5 mx-2 mb-2">Details</button>
                         </div>
                     </div>`;
             phoneContainer.appendChild(div);
             })
     }
 }
-
+// load phone details
 const details = phoneId => {
-    console.log(phoneId);
     const url =` https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
     .then(res=> res.json())
     .then(data=> displayPhone(data.data));
 }
 
+// display phone details 
 const displayPhone = phone => {
     console.log(phone);
-
     const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent='';
     document.getElementById('search-error').style.display='none';
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML=`
-        <img src="${phone.image}" class="card-img-top" alt="...">
+        <img src="${phone.image}" class="card-img-top p-5" alt="...">
         <div class="card-body ">
             <h5 class="card-text text-warning"> Name : ${phone.name}</h5>
             <div>
@@ -91,11 +90,18 @@ const displayPhone = phone => {
                 <ul>
                     <li>Memory : ${phone.mainFeatures.memory}</li>
                     <li>Display Size : ${phone.mainFeatures.displaySize}</li>
-                    <li>Sensor : ${phone.mainFeatures.sensors[0]}</li>
+                    <li>Sensors : ${phone.mainFeatures.sensors}</li>
+                </ul>
+            <h5>Others :</h5>
+                <ul>
+                    <li>Bluetooth : ${phone?.others?.Bluetooth}</li>
+                    <li>USB : ${phone?.others?.USB}</li>
+                    <li>WLAN : ${phone?.others?.WLAN}</li>
                 </ul>
             </div>
-            <h5 class="card-text">Release : ${phone.releaseDate}</h5>
+            <h5 class="card-text">Release : ${phone?.releaseDate}</h5>
         </div>
     `;
     phoneDetails.appendChild(div);
 }
+

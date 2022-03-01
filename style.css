@@ -1,14 +1,20 @@
-#search-error{
-    display: none;
-    
+#search-btn{
+    cursor: pointer;
 }
-#text-error{
-    display: none;
-    
-}
+
 #spinner {
     display: none;
     height: 100px;
     width: 150px;
     justify-content: center;
-  }
+}
+
+#search-error{
+    display: none;
+    
+}
+
+#text-error{
+    display: none;
+    
+}
