@@ -4,13 +4,18 @@ const allPhones = () => {
     // clear search field
     searchField.value='';
     if(searchValue==''){
-        alert('error messagr');
+        document.getElementById('search-error').style.display='block';
+        
     }
     // console.log(searchValue);
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
+    else{
+        document.getElementById('search-error').style.display='none';
+        
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
     fetch(url)
     .then(res => res.json())
     .then(data => showPhones(data.data));
+    }
 }
 
 const showPhones = (phones) =>{
