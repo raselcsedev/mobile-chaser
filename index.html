@@ -24,20 +24,25 @@
         <section>
             <!-- SEARCH BOX & SEARCH BUTTON START -->
             <div class="w-50 container input-group mb-3">
-                <input id="search-box" type="text" class="form-control" placeholder="Enter the Phone " aria-label="Search" aria-describedby="basic-addon2">
+                <input id="search-box" type="text" class="form-control" placeholder="Search the Phone " aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
                   <span onclick="allPhones()" class="input-group-text" id="search-btn">Search
                 </div>
               </div>
               <!-- SEARCH BOX & SEARCH BUTTON FINISH -->
+
               <!--SEARCH ERROR MESSAGE START -->
               <div id="search-error">
-                <h5>Please enter any phone name</h5>
+                <h5 class="text-center text-danger">OOPs! Please write this field to contunue</h5>
+              </div>
+              <div id="text-error">
+                <h5 class="text-center text-danger">SORRY! There was a Problem</h5>
+                <p class="text-center text-danger">Please enter valid name</p>
               </div>
               <!--SEARCH ERROR MESSAGE FINISH  -->
 
               <!-- PHONES DETAILS SECTION START  -->
-              <div id="phone-details" class="d-flex justify-content-center">
+              <div id="phone-details" class="d-flex justify-content-center mb-3 container mx-auto ">
                 
               </div>
               <!-- PHONES DETAILS SECTION FINISH  -->
