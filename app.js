@@ -86,7 +86,7 @@ const displayPhone = phone => {
     div.innerHTML=`
         <img  src="${phone.image}" class="h-50 w-50 card-img-top p-5 mx-auto" alt="...">
         <div class="card-body ">
-            <h5 class="card-text text-warning"> Name : ${phone.name}</h5>
+            <h5 class="card-text "> Name : <span class="text-info">${phone.name}</span> </h5>
             <div>
             <h5>Features :</h5>
                 <ul>
@@ -96,12 +96,12 @@ const displayPhone = phone => {
                 </ul>
             <h5>Others :</h5>
                 <ul>
-                    <li>Bluetooth : ${phone?.others?.Bluetooth}</li>
-                    <li>USB : ${phone?.others?.USB}</li>
-                    <li>WLAN : ${phone?.others?.WLAN}</li>
+                    <li>Bluetooth : ${phone?.others?.Bluetooth?phone?.others?.Bluetooth: 'No'}</li>
+                    <li>USB : ${phone?.others?.USB?phone?.others?.USB:'No'}</li>
+                    <li>WLAN : ${phone?.others?.WLAN?phone?.others?.WLAN:'No'}</li>
                 </ul>
             </div>
-            <h5 class="card-text">Release : ${phone?.releaseDate}</h5>
+            <h5 class="card-text">Release : <span class="text-primary">${phone?.releaseDate?phone?.releaseDate:'comming soon..'}</span> </h5>
         </div>
     `;
     phoneDetails.appendChild(div);
