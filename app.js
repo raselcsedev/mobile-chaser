@@ -49,6 +49,7 @@ const showPhones = (phones) =>{
         document.getElementById('text-error').style.display='none'; 
         phones.slice(0,20).forEach(phone => {
             const div = document.createElement('div');
+            
             div.classList.add('col');
             div.innerHTML=`
                     <div class="card h-100">
@@ -62,6 +63,7 @@ const showPhones = (phones) =>{
                         </div>
                     </div>`;
             phoneContainer.appendChild(div);
+
             })
     }
 }
@@ -82,7 +84,7 @@ const displayPhone = phone => {
     const div = document.createElement('div');
     div.classList.add('card');
     div.innerHTML=`
-        <img src="${phone.image}" class="card-img-top p-5" alt="...">
+        <img  src="${phone.image}" class="h-50 w-50 card-img-top p-5 mx-auto" alt="...">
         <div class="card-body ">
             <h5 class="card-text text-warning"> Name : ${phone.name}</h5>
             <div>
@@ -103,5 +105,7 @@ const displayPhone = phone => {
         </div>
     `;
     phoneDetails.appendChild(div);
+    window.scrollTo(0,0);
+    
 }
 
